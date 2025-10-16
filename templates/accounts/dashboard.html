@@ -1,0 +1,473 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Buxoro Bilimdonlar Maktabi{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-primary">
+                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                </h2>
+                <div>
+                    <span class="badge bg-{{ user.role|default:'secondary' }} fs-6">{{ user.get_role_display|upper }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-gradient-primary text-white">
+                <div class="card-body">
+                    <h4>Welcome back, {{ user.get_full_name }}!</h4>
+                    <p class="mb-0">Ready to continue your learning journey?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if user.role == 'student' %}
+    <!-- Student Dashboard -->
+    <div class="row">
+        <!-- Available Tests -->
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-clipboard-list me-2"></i>Mavjud Testlar
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if available_tests %}
+                        <div class="row">
+                            {% for test in available_tests %}
+                            <div class="col-md-6 mb-3">
+                                <div class="card border-left-primary">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="card-title text-primary">{{ test.title }}</h6>
+                                                <p class="card-text text-muted small">{{ test.description|truncatewords:15 }}</p>
+                                                <div class="small text-muted">
+                                                    <i class="fas fa-clock me-1"></i>{{ test.time_limit }} daqiqa
+                                                    <i class="fas fa-question-circle ms-2 me-1"></i>{{ test.total_questions }} savol
+                                                </div>
+                                            </div>
+                                            <span class="badge bg-{{ test.difficulty }} text-white">{{ test.get_difficulty_display }}</span>
+                                        </div>
+                                        <div class="mt-3">
+                                            <a href="#" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-play me-1"></i>Testni boshlash
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">Hozircha test mavjud emas</h5>
+                            <p class="text-muted">Yangi testlar tez orada qo'shiladi</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Recent Attempts -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-history me-2"></i>So'nggi Urinishlar
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_attempts %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Test</th>
+                                        <th>Sana</th>
+                                        <th>Natija</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for attempt in recent_attempts %}
+                                    <tr>
+                                        <td>{{ attempt.test.title }}</td>
+                                        <td>{{ attempt.started_at|date:"d.m.Y H:i" }}</td>
+                                        <td>
+                                            {% if attempt.total_score %}
+                                                <span class="badge bg-info">{{ attempt.percentage_score|floatformat:1 }}%</span>
+                                            {% else %}
+                                                <span class="text-muted">-</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if attempt.status == 'completed' %}
+                                                <span class="badge bg-success">Tugallangan</span>
+                                            {% elif attempt.status == 'in_progress' %}
+                                                <span class="badge bg-warning">Davom etmoqda</span>
+                                            {% else %}
+                                                <span class="badge bg-secondary">{{ attempt.get_status_display }}</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-3">
+                            <i class="fas fa-clipboard-check fa-2x text-muted mb-2"></i>
+                            <p class="text-muted">Hali testlar topshirmagan ekansiz</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-md-4">
+            <!-- Categories -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-tags me-2"></i>Fanlar
+                    </h6>
+                </div>
+                <div class="card-body">
+                    {% if categories %}
+                        {% for category in categories %}
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="category-icon me-2" style="color: {{ category.color }};">
+                                <i class="fas {{ category.icon|default:'fa-book' }}"></i>
+                            </div>
+                            <span>{{ category.name }}</span>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted small">Kategoriyalar mavjud emas</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                        <i class="fas fa-chart-bar me-2"></i>Statistika
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Umumiy testlar:</span>
+                        <span class="fw-bold">{{ available_tests.count }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Topshirilgan:</span>
+                        <span class="fw-bold">{{ recent_attempts.count }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Muvaffaqiyat:</span>
+                        <span class="fw-bold text-success">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                                        <th>Score</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for attempt in recent_attempts %}
+                                    <tr>
+                                        <td>{{ attempt.test.title }}</td>
+                                        <td>{{ attempt.started_at|date:"M d, Y" }}</td>
+                                        <td>
+                                            {% if attempt.is_completed %}
+                                                {{ attempt.percentage|floatformat:1 }}%
+                                            {% else %}
+                                                -
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if attempt.is_completed %}
+                                                {% if attempt.is_passed %}
+                                                    <span class="badge bg-success">Passed</span>
+                                                {% else %}
+                                                    <span class="badge bg-danger">Failed</span>
+                                                {% endif %}
+                                            {% else %}
+                                                <span class="badge bg-warning">In Progress</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-muted">No test attempts yet. <a href="{% url 'home' %}">Browse available tests</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-pie me-2"></i>Quick Stats
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Tests Taken:</span>
+                        <strong>{{ recent_attempts|length }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Average Score:</span>
+                        <strong>-</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Certificates:</span>
+                        <strong>0</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% elif user.role == 'teacher' %}
+    <!-- Teacher Dashboard -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-clipboard-list me-2"></i>My Tests
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if my_tests %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Test Name</th>
+                                        <th>Created</th>
+                                        <th>Status</th>
+                                        <th>Attempts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for test in my_tests %}
+                                    <tr>
+                                        <td>{{ test.title }}</td>
+                                        <td>{{ test.created_at|date:"M d, Y" }}</td>
+                                        <td>
+                                            {% if test.is_published %}
+                                                <span class="badge bg-success">Published</span>
+                                            {% else %}
+                                                <span class="badge bg-warning">Draft</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ test.attempts.count }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-muted">No tests created yet. <a href="#" class="text-primary">Create your first test</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-tools me-2"></i>Teacher Tools
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Create New Test
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fas fa-question me-2"></i>Question Bank
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fas fa-chart-bar me-2"></i>View Reports
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% elif user.role == 'admin' %}
+    <!-- Admin Dashboard -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>{{ total_users }}</h4>
+                            <p class="mb-0">Total Users</p>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="fas fa-users fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>{{ total_tests }}</h4>
+                            <p class="mb-0">Total Tests</p>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="fas fa-clipboard-list fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>{{ total_attempts }}</h4>
+                            <p class="mb-0">Test Attempts</p>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="fas fa-chart-line fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>85%</h4>
+                            <p class="mb-0">Success Rate</p>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="fas fa-trophy fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-cog me-2"></i>System Overview
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>Welcome to the admin dashboard. Here you can manage the entire test system.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Quick Actions</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="/admin/" class="text-primary">Django Admin Panel</a></li>
+                                <li><a href="#" class="text-primary">Manage Users</a></li>
+                                <li><a href="#" class="text-primary">System Reports</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Recent Activity</h6>
+                            <p class="text-muted small">Recent system activity will be shown here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-tools me-2"></i>Admin Tools
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="/admin/" class="btn btn-primary">
+                            <i class="fas fa-cogs me-2"></i>Django Admin
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fas fa-users me-2"></i>User Management
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fas fa-chart-bar me-2"></i>System Reports
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Quick Actions -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="{% url 'profile' %}" class="btn btn-outline-primary w-100 mb-2">
+                                <i class="fas fa-user me-2"></i>Edit Profile
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{% url 'home' %}" class="btn btn-outline-success w-100 mb-2">
+                                <i class="fas fa-home me-2"></i>Home Page
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" class="btn btn-outline-info w-100 mb-2">
+                                <i class="fas fa-question-circle me-2"></i>Help & Support
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{% url 'logout' %}" class="btn btn-outline-danger w-100 mb-2">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

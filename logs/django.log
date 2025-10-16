@@ -1,0 +1,108 @@
+INFO 2025-10-09 11:49:41,348 autoreload 29478 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 11:53:27,453 autoreload 30054 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:09:16,086 autoreload 34176 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:10:05,736 autoreload 34357 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:10:09,804 basehttp 34357 123145474252800 "GET / HTTP/1.1" 200 10069
+INFO 2025-10-09 12:10:09,823 basehttp 34357 123145474252800 "GET /static/css/main.css HTTP/1.1" 200 7985
+INFO 2025-10-09 12:10:09,824 basehttp 34357 123145491042304 "GET /static/js/main.js HTTP/1.1" 200 17909
+INFO 2025-10-09 12:10:10,859 basehttp 34357 123145491042304 "GET / HTTP/1.1" 200 10069
+INFO 2025-10-09 12:10:11,042 basehttp 34357 123145491042304 "GET / HTTP/1.1" 200 10069
+INFO 2025-10-09 12:10:12,180 basehttp 34357 123145491042304 "GET /auth/login/ HTTP/1.1" 200 7098
+WARNING 2025-10-09 12:10:16,086 log 34357 123145491042304 Not Found: /accounts/register/
+WARNING 2025-10-09 12:10:16,086 basehttp 34357 123145491042304 "GET /accounts/register/ HTTP/1.1" 404 3115
+INFO 2025-10-09 12:10:29,407 basehttp 34357 123145491042304 "GET /auth/login/ HTTP/1.1" 200 7098
+INFO 2025-10-09 12:10:36,579 basehttp 34357 123145491042304 "POST /auth/login/ HTTP/1.1" 200 7610
+INFO 2025-10-09 12:10:39,981 basehttp 34357 123145491042304 "GET / HTTP/1.1" 200 10069
+INFO 2025-10-09 12:10:45,405 basehttp 34357 123145491042304 "GET /auth/login/ HTTP/1.1" 200 7098
+INFO 2025-10-09 12:10:50,587 basehttp 34357 123145491042304 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-10-09 12:10:50,622 basehttp 34357 123145491042304 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4201
+INFO 2025-10-09 12:10:50,680 basehttp 34357 123145491042304 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-10-09 12:10:50,683 basehttp 34357 123145474252800 "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+INFO 2025-10-09 12:10:50,684 basehttp 34357 123145507831808 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-10-09 12:10:50,691 basehttp 34357 123145507831808 "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+INFO 2025-10-09 12:10:50,692 basehttp 34357 123145474252800 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-10-09 12:10:50,693 basehttp 34357 123145491042304 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-10-09 12:10:59,280 autoreload 34357 140704416792576 /Users/macbookpro/Desktop/test/buxoro_test_system/urls.py changed, reloading.
+INFO 2025-10-09 12:10:59,860 autoreload 34381 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:11:06,078 basehttp 34381 123145571602432 "GET /auth/login/ HTTP/1.1" 200 7098
+INFO 2025-10-09 12:11:49,101 autoreload 34381 140704416792576 /Users/macbookpro/Desktop/test/accounts/views.py changed, reloading.
+INFO 2025-10-09 12:11:49,651 autoreload 34391 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:11:57,577 autoreload 34391 140704416792576 /Users/macbookpro/Desktop/test/accounts/urls.py changed, reloading.
+INFO 2025-10-09 12:11:58,127 autoreload 34399 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:12:58,637 basehttp 34399 123145507864576 "GET /accounts/register/ HTTP/1.1" 200 9787
+INFO 2025-10-09 12:12:58,662 basehttp 34399 123145507864576 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-10-09 12:12:58,664 basehttp 34399 123145524654080 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-10-09 12:17:56,343 autoreload 34399 140704416792576 /Users/macbookpro/Desktop/test/accounts/admin.py changed, reloading.
+INFO 2025-10-09 12:17:56,959 autoreload 34449 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:21:39,536 autoreload 34547 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:22:59,452 autoreload 34638 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:23:34,256 autoreload 34716 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:24:02,156 autoreload 34716 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:24:02,683 autoreload 34727 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:24:12,515 autoreload 34804 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:24:39,470 autoreload 34727 140704416792576 /Users/macbookpro/Desktop/test/accounts/admin.py changed, reloading.
+INFO 2025-10-09 12:24:40,011 autoreload 34830 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:24:40,119 autoreload 34804 140704416792576 /Users/macbookpro/Desktop/test/accounts/admin.py changed, reloading.
+INFO 2025-10-09 12:24:40,668 autoreload 34833 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:25:40,461 autoreload 34830 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:25:40,990 autoreload 34843 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:25:41,069 autoreload 34833 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:25:41,611 autoreload 34845 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:25:47,518 autoreload 34845 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:25:47,836 autoreload 34843 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:25:48,084 autoreload 34856 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:25:48,386 autoreload 34857 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:26:18,676 autoreload 34856 140704416792576 /Users/macbookpro/Desktop/test/questions/admin.py changed, reloading.
+INFO 2025-10-09 12:26:18,979 autoreload 34857 140704416792576 /Users/macbookpro/Desktop/test/questions/admin.py changed, reloading.
+INFO 2025-10-09 12:26:19,286 autoreload 34866 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:26:19,569 autoreload 34867 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:26:34,030 autoreload 34866 140704416792576 /Users/macbookpro/Desktop/test/questions/admin.py changed, reloading.
+INFO 2025-10-09 12:26:34,329 autoreload 34867 140704416792576 /Users/macbookpro/Desktop/test/questions/admin.py changed, reloading.
+INFO 2025-10-09 12:26:34,740 autoreload 34876 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:26:35,074 autoreload 34877 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:26:49,000 autoreload 34876 140704416792576 /Users/macbookpro/Desktop/test/results/admin.py changed, reloading.
+INFO 2025-10-09 12:26:49,396 autoreload 34877 140704416792576 /Users/macbookpro/Desktop/test/results/admin.py changed, reloading.
+INFO 2025-10-09 12:26:49,602 autoreload 34887 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:26:49,980 autoreload 34888 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:27:07,887 autoreload 34887 140704416792576 /Users/macbookpro/Desktop/test/results/admin.py changed, reloading.
+INFO 2025-10-09 12:27:08,215 autoreload 34888 140704416792576 /Users/macbookpro/Desktop/test/results/admin.py changed, reloading.
+INFO 2025-10-09 12:27:08,864 autoreload 34905 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:27:09,096 autoreload 34907 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:27:27,472 autoreload 34907 140704416792576 /Users/macbookpro/Desktop/test/results/admin.py changed, reloading.
+INFO 2025-10-09 12:27:28,077 autoreload 34937 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:27:28,298 autoreload 34905 140704416792576 /Users/macbookpro/Desktop/test/results/admin.py changed, reloading.
+INFO 2025-10-09 12:27:28,915 autoreload 34938 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:27:40,478 autoreload 35020 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:28:00,460 autoreload 34938 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:28:00,661 autoreload 34937 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:28:00,913 autoreload 35020 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:28:01,062 autoreload 35027 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:28:01,281 autoreload 35028 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:28:01,588 autoreload 35029 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:28:09,182 autoreload 35027 140704416792576 /Users/macbookpro/Desktop/test/examinations/admin.py changed, reloading.
+INFO 2025-10-09 12:28:09,764 autoreload 35112 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:28:24,325 autoreload 35187 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:28:47,958 autoreload 35499 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:28:50,343 basehttp 35499 123145491537920 "GET / HTTP/1.1" 200 10069
+INFO 2025-10-09 12:28:50,445 basehttp 35499 123145491537920 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2025-10-09 12:28:50,446 basehttp 35499 123145508327424 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2025-10-09 12:28:52,698 basehttp 35499 123145508327424 "GET /accounts/register/ HTTP/1.1" 200 9787
+INFO 2025-10-09 12:29:14,815 basehttp 35499 123145508327424 "POST /accounts/register/ HTTP/1.1" 200 10597
+INFO 2025-10-09 12:29:24,335 basehttp 35499 123145525116928 "GET /admin/?id=061f5ec0-8ecc-49a2-a00a-5be9c68e065d&vscodeBrowserReqId=1759994964309 HTTP/1.1" 302 0
+INFO 2025-10-09 12:29:24,361 basehttp 35499 123145525116928 "GET /admin/login/?next=/admin/%3Fid%3D061f5ec0-8ecc-49a2-a00a-5be9c68e065d%26vscodeBrowserReqId%3D1759994964309 HTTP/1.1" 200 4359
+INFO 2025-10-09 12:30:08,803 autoreload 35499 140704416792576 /Users/macbookpro/Desktop/test/accounts/signals.py changed, reloading.
+INFO 2025-10-09 12:30:09,485 autoreload 35565 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:30:36,958 autoreload 35565 140704416792576 /Users/macbookpro/Desktop/test/accounts/views.py changed, reloading.
+INFO 2025-10-09 12:30:37,508 autoreload 35570 140704416792576 Watching for file changes with StatReloader
+INFO 2025-10-09 12:30:46,071 basehttp 35570 123145351839744 "GET /accounts/register/?id=061f5ec0-8ecc-49a2-a00a-5be9c68e065d&vscodeBrowserReqId=1759995046047 HTTP/1.1" 200 9787
+INFO 2025-10-09 12:31:00,823 basehttp 35570 123145368629248 "POST /accounts/register/ HTTP/1.1" 200 10489
+INFO 2025-10-09 12:31:07,553 basehttp 35570 123145368629248 "GET /auth/login/ HTTP/1.1" 200 7098
+INFO 2025-10-09 12:31:16,803 basehttp 35570 123145368629248 "POST /auth/login/ HTTP/1.1" 302 0
+INFO 2025-10-09 12:31:16,815 basehttp 35570 123145368629248 "GET /accounts/profile/ HTTP/1.1" 200 10457
+INFO 2025-10-09 12:31:33,236 basehttp 35570 123145368629248 "POST /accounts/profile/ HTTP/1.1" 302 0
+INFO 2025-10-09 12:31:33,245 basehttp 35570 123145368629248 "GET /accounts/profile/ HTTP/1.1" 200 11127
+WARNING 2025-10-09 12:31:39,144 log 35570 123145368629248 Not Found: /dashboard/
+WARNING 2025-10-09 12:31:39,145 basehttp 35570 123145368629248 "GET /dashboard/ HTTP/1.1" 404 3023
+INFO 2025-10-09 12:31:43,793 basehttp 35570 123145368629248 "GET / HTTP/1.1" 200 11249
+INFO 2025-10-09 12:31:49,267 basehttp 35570 123145368629248 "GET /tests/ HTTP/1.1" 200 43
+INFO 2025-10-09 12:32:01,030 basehttp 35570 123145368629248 "GET /tests/ HTTP/1.1" 200 43

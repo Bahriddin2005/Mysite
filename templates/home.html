@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bosh sahifa - Buxoro Test System{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="row align-items-center py-5">
+    <div class="col-lg-6">
+        <h1 class="display-4 fw-bold text-primary mb-4">
+            Buxoro Bilimdonlar Maktabi
+        </h1>
+        <p class="lead mb-4">
+            Professional test olish tizimi bilan bilimlaringizni sinab ko'ring va o'z darajangizni oshiring.
+        </p>
+        <div class="d-flex gap-3">
+            {% if user.is_authenticated %}
+                <a href="/tests/" class="btn btn-primary btn-lg">
+                    <i class="fas fa-list-alt me-2"></i>Testlarni ko'rish
+                </a>
+                <a href="{% url 'dashboard' %}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-sign-in-alt me-2"></i>Kirish
+                </a>
+                <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-user-plus me-2"></i>Ro'yxatdan o'tish
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-6 text-center">
+        <div class="bg-light rounded-3 p-5">
+            <i class="fas fa-graduation-cap text-primary" style="font-size: 8rem;"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="row py-5">
+    <div class="col-12">
+        <h2 class="text-center mb-5">Tizim imkoniyatlari</h2>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+                <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                    <i class="fas fa-clock text-primary fa-2x"></i>
+                </div>
+                <h5 class="card-title">Real-time Testing</h5>
+                <p class="card-text">Vaqt nazorati, auto-save va real-time monitoring bilan professional test olish.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+                <div class="bg-success bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                    <i class="fas fa-chart-line text-success fa-2x"></i>
+                </div>
+                <h5 class="card-title">Analytics</h5>
+                <p class="card-text">Batafsil statistika, progress tracking va individual performance analysis.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+                <div class="bg-warning bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                    <i class="fas fa-certificate text-warning fa-2x"></i>
+                </div>
+                <h5 class="card-title">Certificates</h5>
+                <p class="card-text">Muvaffaqiyatli test topshirganlar uchun digital sertifikatlar.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Statistics Section -->
+{% if user.is_authenticated %}
+<div class="row py-5 bg-light rounded-3">
+    <div class="col-12">
+        <h3 class="text-center mb-4">Tizim statistikasi</h3>
+    </div>
+    <div class="col-md-3 text-center">
+        <h2 class="text-primary fw-bold">{{ total_tests|default:"0" }}</h2>
+        <p class="mb-0">Mavjud testlar</p>
+    </div>
+    <div class="col-md-3 text-center">
+        <h2 class="text-success fw-bold">{{ total_users|default:"0" }}</h2>
+        <p class="mb-0">Ro'yxatdan o'tgan foydalanuvchilar</p>
+    </div>
+    <div class="col-md-3 text-center">
+        <h2 class="text-warning fw-bold">{{ total_attempts|default:"0" }}</h2>
+        <p class="mb-0">Test urinishlari</p>
+    </div>
+    <div class="col-md-3 text-center">
+        <h2 class="text-info fw-bold">{{ certificates_issued|default:"0" }}</h2>
+        <p class="mb-0">Berilgan sertifikatlar</p>
+    </div>
+</div>
+{% endif %}
+
+<!-- Recent Tests Section -->
+<div class="row py-5">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>So'nggi testlar</h3>
+            <a href="/tests/" class="btn btn-outline-primary">
+                Barchasini ko'rish <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Sample test cards -->
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge bg-primary">Matematika</span>
+                    <small class="text-muted">45 min</small>
+                </div>
+                <h5 class="card-title">Algebra asoslari</h5>
+                <p class="card-text text-muted">9-sinf uchun algebra bo'yicha asosiy mavzular.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">
+                        <i class="fas fa-users me-1"></i>25 ta savol
+                    </small>
+                    <small class="text-muted">
+                        <i class="fas fa-star me-1"></i>O'rta daraja
+                    </small>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent">
+                {% if user.is_authenticated %}
+                    <button class="btn btn-primary btn-sm w-100">Test boshlash</button>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm w-100">
+                        Kirish kerak
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge bg-success">Fizika</span>
+                    <small class="text-muted">30 min</small>
+                </div>
+                <h5 class="card-title">Mexanika</h5>
+                <p class="card-text text-muted">10-sinf fizika kursidan mexanika bo'limi.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">
+                        <i class="fas fa-users me-1"></i>20 ta savol
+                    </small>
+                    <small class="text-muted">
+                        <i class="fas fa-star me-1"></i>Qiyin
+                    </small>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent">
+                {% if user.is_authenticated %}
+                    <button class="btn btn-primary btn-sm w-100">Test boshlash</button>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm w-100">
+                        Kirish kerak
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge bg-info">Kimyo</span>
+                    <small class="text-muted">40 min</small>
+                </div>
+                <h5 class="card-title">Organik kimyo</h5>
+                <p class="card-text text-muted">11-sinf kimyo darsidan organik birikmalar.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">
+                        <i class="fas fa-users me-1"></i>30 ta savol
+                    </small>
+                    <small class="text-muted">
+                        <i class="fas fa-star me-1"></i>O'rta daraja
+                    </small>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent">
+                {% if user.is_authenticated %}
+                    <button class="btn btn-primary btn-sm w-100">Test boshlash</button>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm w-100">
+                        Kirish kerak
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
